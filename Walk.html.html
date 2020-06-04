@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OU Running Club - Walks</title>
+    <link rel="stylesheet" type="text/css" href="OURunningClubStyle.css">
+    <script src="ouScript.js"></script>
+</head>
+<body>
+
+    <div class="grid-container">
+	
+	<div id="logo">
+		<img id="image" src="oulogo.jpg" alt="runners.png">
+	</div>
+		
+	<div id="title"><h1>OU Running Club - Walk</h1></div>
+		
+	<div id="side">
+		<button class="sideButton" id="btnAddWalk" onclick="fnAddWalk()">Add Walk</button> 
+		<br/>
+		<button class="sideButton" >View Walks</button> 
+		<br/>
+		<button class="sideButton sideSocial" >View Social Events</button> 
+		<br/>
+		<button class="sideButton" >View Members</button> 
+		<br/>
+		<button class="sideButtonNormal" >Club Announcements</button> 
+		<br/>
+		<button class="sideButtonResponsive" >Announcements</button> 
+		<br/>
+    </div>
+		
+    <div id="main">
+
+
+	<form action="https://students.open.ac.uk/mct/tt284/reflect/reflect.php" method="post" name="postWalk">
+
+		<!--hidden field-->
+		<input type="hidden" name="sessionID" value="12345678-09ab-1111-cdef" />
+
+		<table class="walksInput" id="walksInputTable">
+				<tr>
+					<td><label class="formLabel" for="name">Name</label></td>
+					<td><input type="text" name="name" id="name" required ></td>
+				</tr>
+				<tr>
+					<td><label class="formLabel" for="date">Date</label></td>		
+					<td><input type="text"  name="date" id="date"  required></td>
+				</tr>
+				<tr>
+					<td><label class="formLabel" for="startTime">Start Time</label></td>			
+					<td><input type="text"  name="startTime" id="startTime" required /></td>
+				</tr>
+				<tr>
+					<td><label class="formLabel" for="meetingPoint">Meeting Point</label></td>			
+					<td><input type="text"  name="meetingPoint" id="meetingPoint" size="50" maxlength="50" required />
+				</tr>
+				<tr>
+					<td><label class="formLabel" for="distance">Distance in miles</label></td>		
+					<td><input type="number" name="distance" id="distance" min="1" max="40" required></td>
+				</tr>
+				<tr>
+					<td><label class="formLabel" for="notes">Notes</label></td>
+					<td><textarea name="notes" id="notes" rows="10" cols="30"  required maxlength="100" minlength="10">Type relevant notes here...</textarea></td>
+				</tr>
+				<tr>
+					<td>
+						<label class="formLabel" for="status">Status</label>
+					</td>	
+					<td>			
+
+						<fieldset id="status">
+						<div>
+							<input type="radio" name="status" id="approved" value="approved" checked >
+							<label  class="radioLabel" for="approved">Approved</label>
+							<input type="radio" name="status" id="pending" value="pending" >
+							<label  class="radioLabel" for="pending">Pending Approval</label>	
+							<input type="radio" name="status" id="rejected" value="rejected" >																			
+							<label  class="radioLabel" for="rejected">Rejected</label>
+							</div>
+						</fieldset>
+			
+					</td>
+				</tr> 
+				<tr>
+				<td></td>
+				<td>
+					<button id="btnWalkForm" onclick="fnSubmitWalk()">Submit</button>
+					<br/>
+					<button type="reset" id="btnWalkFormReset"  name="reset" value="Reset" >Reset</button>
+				</td>
+				</tr>
+		</table>
+		</form>
+		
+
+<!--Responsive form is hidden when there is a screen larger than 375px -->
+
+		
+		<form action="https://students.open.ac.uk/mct/tt284/reflect/reflect.php" method="post" id="formResponsive" name="postWalk">
+
+		<!--hidden field-->
+		<input type="hidden" name="sessionID" value="12345678-09ab-1111-cdef" />
+		
+		<table class="walksInputResponsive" id="walksInputTableResponsive">
+
+					
+					<tr><p id="formLabel" >Name</p><br/></tr>
+					<tr><input type="text" name="name" id="name" required ></tr>
+					<br/>
+					<tr><p id="formLabel" >Date</p><br/></tr>		
+					<tr><input type="date" name="date" id="date" max="2020-12-31" min="2019-01-01" required></tr>
+					<br/>
+					<tr><p id="formLabel" >Start Time</p><br/></tr>			
+					<tr><input type="time" name="startTime" id="startTime" size="30" maxlength="30" required /></tr>
+					<br/>
+					<tr><p id="formLabel" >Meeting Point</p><br/></tr>			
+					<tr><input type="text" label="meetingPoint" name="meetingPoint" id="meetingPoint" size="50" maxlength="50" required /></tr>
+					<br/>
+					<tr><p id="formLabel" >Distance in miles</p><br/></tr>		
+					<tr><input type="number" name="distance" id="distance" min="1" max="40" required></p></tr>
+					<br/>
+					<tr><p id="formLabel" >Notes</p><br/></tr>
+					<tr><textarea name="notes" id="notes" rows="10" cols="30"  required maxlength="100" minlength="10">Type relevant notes here...</textarea></p></tr>
+					<br/>
+					<tr><p id="formLabel" for="status">Status</p></tr>
+					<br/>	
+					<tr><fieldset id="status">
+							<div>
+								<input type="radio" name="status" id="approved" value="approved" checked >
+								<label  class="radioLabel" for="approved">Approved</label>
+								<input type="radio" name="status" id="pending" value="pending" >
+								<label  class="radioLabel" for="pending">Pending Approval</label>	
+								<input type="radio" name="status" id="rejected" value="rejected" >																			
+								<label  class="radioLabel" for="rejected">Rejected</label></tr>
+								</div>
+							</fieldset>
+					</tr> 
+				<tr></tr>
+				<tr>
+					<button id="btnWalkForm" onclick="fnSubmitWalk()">Submit</button>
+					<br/>
+					<button type="reset" id="btnWalkFormReset"  name="reset" value="Reset" >Reset</button>
+				</tr>
+				</tr>
+
+		</table>
+		</div>	
+		</form>		
+
+	
+			
+    <div id="footer">Footer</div>
+
+ `</div>
+
+</body>
+</html>
